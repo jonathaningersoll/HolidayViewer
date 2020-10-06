@@ -1,0 +1,92 @@
+body{
+    background-color: mediumspringgreen;
+    margin: 0px;
+}
+
+/* NAVIGATION */
+
+#nav{
+    width: 100%;
+    height: auto;
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+#nav-content{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+button{
+    width: 50%;
+    border: none;
+    padding: 10px;
+    color: mediumspringgreen;
+    background-color: #666;
+    text-align: center;
+}
+
+/* MAIN BODY */
+
+#main{
+    max-width: 900px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+/* CARDS */
+
+.card{
+    width: 16rem;
+    border: 1px solid lightgrey;
+    border-top-left-radius: 60px;
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    padding: 40px;
+    display: inline-block;
+    margin: 10px;
+}
+
+.card:nth-child(2){
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.card:last-child{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 60px;
+    border-top-right-radius: 60px;
+}
+
+.card-body p:last-child(2){
+    background-color: blue;
+    text-align: center;
+}
+
+/*
+.card-body{
+
+}
+
+#prevHoliday{
+    
+}
+
+#currHoliday{
+
+}
+
+#nextHoliday{
+
+}
+*/

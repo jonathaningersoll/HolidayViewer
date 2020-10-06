@@ -3,11 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles.css">
     <title>Document</title>
 </head>
 <body>
+
+                                    <!-- NAVIGATION -->
+
+    <div id="nav">
+        <div id="nav-content">
+            <h1>Impending Holidays:</h1>
+
+            <form>
+                <p>
+                    <label for="country"></label>
+                    <select id="countryDropdown" name="country">
+                        <option value="">--Please choose a country--</option>
+                        
+                    </select>
+                </br>
+                </p>
+                <p>
+                    <button class="submit">Submit search</button>
+                </p>
+            </form>
+        </div>
+    </div>
+
+                                    <!-- END NAVIGATION -->
+
+                                    <!-- BEGIN MAIN BODY -->
+
+<div id="main">
+
+                                    <!-- BEGIN CARD -->
+    <div class="card">
+        <div class="cardbody">
+            <h5 class="card-title">
+                Previous Holiday:
+            </h5>
+                                    <!-- CARD CONTENT -->
+                                    <!-- card content will include the previous holiday + "x days ago". -->
+            <p class="card-text" id="prevH">
+                card-text placeholder text
+            </p>
+                                    <!-- include p[2] in order to give it a class to center the text -->
+            <p class="card-text">
+                card-text date
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="cardbody">
+            <h5 class="card-title">
+                Today:
+            </h5>
+            <p class="card-text" id="today">
+                card-text placeholder text.
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="cardbody">
+            <h5 class="card-title">
+                Next Holiday:
+            </h5>
+            <p class="card-text" id="nextH">
+                card-text placeholder text.
+            </p>
+        </div>
+    </div>
+</div>
+
+                                    <!-- END OF MAIN BODY -->
     
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="./scripts.js"></script>
 
 </body>
