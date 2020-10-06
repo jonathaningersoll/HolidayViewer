@@ -8,7 +8,7 @@ const searchForm = document.querySelector('form');
 
 searchForm.addEventListener('submit', fetchHolidays);
 
-// let year = new Date().getFullYear();
+
 
 preFetch();
 
@@ -29,8 +29,11 @@ function preFetch(){
 
 function fetchHolidays(e){
     e.preventDefault();
-    let xx = document.getElementById('countryDropdown').value;
-    url = `${baseUrl}${xx}${key}`;
+    let year = new Date().getFullYear();
+    // https://calendarific.com/api/v2/holidays?&api_key=baa9dc110aa712sd3a9fa2a3dwb6c01d4c875950dc32vs&country=US&year=2019
+
+    let countryCode = document.getElementById('countryDropdown').value;
+    url = baseUrl + "holidays" + key + "&country=" + countryCode + "&year=" + year;
     console.log(url);
 
     fetch(url)
