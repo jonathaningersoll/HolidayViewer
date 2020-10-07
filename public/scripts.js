@@ -1,6 +1,8 @@
 const baseUrl = 'https://calendarific.com/api/v2/';
 
-const key = 'bb3fdb0db093abb333c1fac7ac8d11449da7124e';
+// prev const key = 'bb3fdb0db093abb333c1fac7ac8d11449da7124e';
+
+const key = '521152d012dab37431bb6614b20ec47d12fb3cbd';
 
 let url;
 
@@ -71,105 +73,98 @@ function populateCountries(json){
 function displayHolidayData(json){
 
     // Today's month and day
+    let todayYear = new Date();
     let todaysDay = new Date().getDate();
     let todaysMonth = new Date().getMonth() + 1;
     
     // Array of holidays:
     let holidays = json.response.holidays;
 
-    let nextHolidayArray = [];
-    let prevHolidayArray;
-
-console.log(holidays);
+    let futureHolidayArray = [];
+    let pastHolidayArray = [];
+    let nextDay;
+    let todayHoliday = [];
+    let prevDay;
 
     for(day of holidays){
         let d = day.date.datetime;
-        if(todaysMonth == d.month && todaysDay == d.day){
-            console.log("Holiday!");
+        if(d.month < todaysMonth){                                      // All past holidays before today's month
+            pastHolidayArray.push(day);
+        }else if(d.month == todaysMonth){
+            if(d.day < todaysDay && d.month == todaysMonth){            // All previous holidays this month before today
+                pastHolidayArray.push(day);
+            }else if(d.month == todaysMonth && d.day > todaysDay){      // Today's month, future holidays
+                futureHolidayArray.push(day);
+            }else{
+                todayHoliday = day;
+            }
         }else{
-            if(d.month >= todaysMonth){
-                if(d.day > todaysDay){
-                    nextHolidayArray.push(day);
-                }
-            }
+            futureHolidayArray.push(day);
         }
     }
 
-    // captured list of holidays AFTER today.
-    console.log(nextHolidayArray);
+    console.log("previous hoidays in this year: ", pastHolidayArray);
+    console.log("Upcoming hoidays this year: ", futureHolidayArray);
 
-    // Day variables
-    let nextDay;
-    let today;
-    let prevDay;
-
-    let countrysHolidays;
-
-/*
-    // Iterate through the holidays:
-    for(day of holidays){
-        // If today matches one of the holidays...
-
-        if(todaysMonth == holidays.date.datetime.month && todaysDay == holidays.date.datetime.month){
-            console.log("today is a holiday");
-            console.log(holidays.name);
-            // If today is not a holiday...
-        } else{
-            
-        }
-    }
-*/
-
-    /*
-    for(hday of holidays){
-        // console.log(hday.date.datetime);
-        let x;
-        if(hday.date.datetime.month >= todaysMonth){
-            if(hday.date.datetime.day > todaysDay){
-                
-                console.log(holidays.indexOf(hday.name));
-
-                console.log(hday)
-                console.log(hday.date.datetime.month, hday.date.datetime.day, hday.name);
-            }
-
-
-        }
-    }
-    */
-
-    // function checkHolidays(hdays){
-    //     return hdays.date.datetime.month >= todaysMonth
-    // }
-
-    // console.log(fullArray.findIndex(checkHolidays));
-
-
-
+    // populate the holidays
+    let prevHoliday = pastHolidayArray.pop();
+    let [nextHoliday] = futureHolidayArray;
     
-            // WRAP IN FOR OF LOOP
-            // let isoDate = new Date().toISOString(); // Today's date
-            // let todayiso
-            // console.log(hDay.date.iso === );
+    console.log(nextHoliday.name, nextHoliday.date.iso, nextHoliday.description);
+    console.log(prevHoliday.name, prevHoliday.date.iso, prevHoliday.description);
 
-    // create an array of ISO dates from the group.
-    // take today's date, and remove all from that date to the end.
-    // take the last date left and use that.
+    if(todayHoliday != null){
 
+        let main = document.getElementById("main");
+        let cardP = document.createElement('div');
+        let cardBodyP = document.createElement('div');
+        let headP = document.createElement('h5');
+        let cardTextP = document.createElement('p');
+
+        let cardT = document.createElement('div');
+        let cardBodyT = document.createElement('div');
+        let headT = document.createElement('h5');
+        let cardTextT = document.createElement('p');
+        
+        let cardN = document.createElement('div');
+        let cardBodyN = document.createElement('div');
+        let headN = document.createElement('h5');
+        let cardTextN = document.createElement('p');
+
+        cardP.classList.add("card");
+        cardBodyP.classList = "card-body";
+        headP.classList = "card-title";
+        cardTextP.classList = "card-text";
+
+        cardT.classList = "card";
+        cardBodyT.classList = "card-body";
+        headT.classList = "card-title";
+        cardTextT.classList = "card-text";
+
+        cardN.classList = "card";
+        cardBodyN.classList = "card-body";
+        headN.classList = "card-title";
+        cardTextN.classList = "card-text";
+
+        main.appendChild(cardP);
+        cardP.appendChild(cardBodyP);
+        cardBodyP.appendChild(headP);
+        cardBodyP.appendChild(cardTextP);
+
+        main.appendChild(cardT);
+        cardP.appendChild(cardBodyT);
+        cardBodyP.appendChild(headT);
+        cardBodyP.appendChild(cardTextT);
+
+        main.appendChild(cardN);
+        cardP.appendChild(cardBodyN);
+        cardBodyP.appendChild(headN);
+        cardBodyP.appendChild(cardTextN);
+        
+    }else{
+        
+    }
     // let prevH = getElementById('prevH');
     // let today = getElementById('today');
     // let nextH = getElementById('nextH');
-}
-
-function getDates(holidays){
-    
-    let dateArray = [];
-
-    console.log(holidays);
-
-        for(h in holidays){
-            let d = holidays[h].date.iso;
-            dateArray.push(d);
-        }
-    return dateArray;
 }
