@@ -28,6 +28,11 @@ button{
     background-color: #666;
     text-align: center;
 }
+select{
+    min-width: 50%;
+    padding: 10px;
+    border: 1px solid;
+}
 
 /* MAIN BODY */
 
@@ -51,7 +56,7 @@ button{
     border-bottom-left-radius: 60px;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
-    padding: 40px;
+    padding: 20px;
     display: inline-block;
     margin: 10px;
 }
@@ -71,6 +76,10 @@ button{
 .card-body p:last-child(2){
     background-color: blue;
     text-align: center;
+}
+
+.test{
+    border: 1px solid red;
 }
 
 /*
