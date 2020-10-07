@@ -75,7 +75,6 @@ function displayHolidayData(json){
         dateBody.removeChild(dateBody.firstChild);
     }
     // Today's month and day
-    let todayYear = new Date();
     let todaysDay = new Date().getDate();
     let todaysMonth = new Date().getMonth() + 1;
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -102,17 +101,10 @@ function displayHolidayData(json){
             futureHolidayArray.push(day);
         }
     }
-    console.log(todayHoliday);
-
-    console.log("previous hoidays in this year: ", pastHolidayArray);
-    console.log("Upcoming hoidays this year: ", futureHolidayArray);
 
     // populate the holidays
     let prevHoliday = pastHolidayArray.pop();
     let [nextHoliday] = futureHolidayArray;
-    
-    console.log(nextHoliday.name, nextHoliday.date.iso, nextHoliday.description);
-    console.log(prevHoliday.name, prevHoliday.date.iso, prevHoliday.description);
 
     if(todayHoliday != ""){
         let main = document.getElementById("main");
@@ -146,8 +138,6 @@ function displayHolidayData(json){
         headN.classList = "card-title";
         cardTextN.classList = "card-text";
 
-        // begin content
-
         headP.textContent = "Previous Holiday:";
         headT.textContent = "Today:";
         headN.textContent = "Next Holiday:";
@@ -155,8 +145,6 @@ function displayHolidayData(json){
         cardTextP.innerHTML = `<p>${months[prevHoliday.date.datetime.month - 1]} ${prevHoliday.date.datetime.day}<p>${prevHoliday.name}</p><p>${prevHoliday.description}`;
         cardTextT.innerHTML = `<p>${months[todayHoliday.date.datetime.month - 1]} ${todayHoliday.date.datetime.day}</p><p>${todayHoliday.name}</p><p>${todayHoliday.description}`;
         cardTextN.innerHTML = `<p>${months[nextHoliday.date.datetime.month - 1]} ${nextHoliday.date.datetime.day}<p>${nextHoliday.name}</p><p>${nextHoliday.description}`;
-
-        // end content
 
         main.appendChild(cardP);
         cardP.appendChild(cardBodyP);
@@ -205,8 +193,6 @@ function displayHolidayData(json){
         headN.classList = "card-title";
         cardTextN.classList = "card-text";
 
-        // begin content
-
         headP.textContent = "Previous Holiday:";
         headT.textContent = "Today:";
         headN.textContent = "Next Holiday:";
@@ -214,8 +200,6 @@ function displayHolidayData(json){
         cardTextP.innerHTML = `<p>${months[prevHoliday.date.datetime.month - 1]} ${prevHoliday.date.datetime.day}<p>${prevHoliday.name}</p><p>${prevHoliday.description}`;
         cardTextT.innerHTML = `<p>${months[todaysMonth - 1]} ${todaysDay}</p><p>No holidays today!</p>`;
         cardTextN.innerHTML = `<p>${months[nextHoliday.date.datetime.month - 1]} ${nextHoliday.date.datetime.day}<p>${nextHoliday.name}</p><p>${nextHoliday.description}`;
-
-        // end content
 
         main.appendChild(cardP);
         cardP.appendChild(cardBodyP);
@@ -232,7 +216,4 @@ function displayHolidayData(json){
         cardBodyN.appendChild(headN);
         cardBodyN.appendChild(cardTextN);
     }
-    // let prevH = getElementById('prevH');
-    // let today = getElementById('today');
-    // let nextH = getElementById('nextH');
 }
